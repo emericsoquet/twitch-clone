@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    @include vendor-prefixes(appearance, none, (moz, webkit));
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    @include vendor-prefixes(appearance, none, (moz, webkit));
+    background: none;
+    border: none;
+}

@@ -1,0 +1,14 @@
+input[type=text] {
+    background: $component1;
+    border-radius: 5px;
+    padding: 7.5px 10px;
+    transition: all .2s;
+    font-family: $regularFont, sans-serif;
+    border: 2px solid transparent;
+    transition: all .2s;
+    &:focus, &:focus-within, &:focus-visible {
+        background: $component1;
+        border-color: transparentize($primary, .5);
+        outline: none;
+    }
+}

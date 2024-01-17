@@ -1,0 +1,21 @@
+/* abstract : style ressources for project */
+@import 'abstract/fonts';
+@import 'abstract/variables';
+@import 'abstract/mixins';
+@import 'abstract/placeholders';
+
+/* core : default configuration */
+@import 'core/reset';
+@import 'core/commons';
+@import 'core/typography';
+
+/* components : pieces used through the project */
+@import 'components/buttons';
+@import 'components/inputs';
+
+/* blocks : parts of specific page */
+@import 'blocks/games';
+
+/* layout : common elements on most pages */
+@import 'layout/header';
+@import 'layout/sidebar';

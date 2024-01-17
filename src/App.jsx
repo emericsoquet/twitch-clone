@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import './styles/app.scss'
 
-function App() {
+import Header from './components/Header/Header'
+import Sidebar from './components/Sidebar/Sidebar'
+import Games from './components/Games/Games'
+
+
+export default function App() {
 
   return (
     <>
-      <h1>Hello World!</h1>
+      <Header></Header>
+      <Sidebar></Sidebar>
+      <Games></Games>
     </>
   )
 }
 
-export default App

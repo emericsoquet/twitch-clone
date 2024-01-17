@@ -1,0 +1,26 @@
+@mixin vendor-prefixes($property, $value, $prefixes: (moz, o, webkit, ms), $onProperty: true) {
+    @each $prefix in $prefixes {
+        @if $onProperty {
+            #{'-' + $prefix + '-' + $property}: $value;
+        } @else {
+            $property: #{'-' + $prefix + '-' + $value};
+        }
+    }
+    #{$property}: $value;
+}
+
+@mixin input-placeholder {
+    @include vendor-prefixes(appearance, textfield, (moz, webkit));
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+    &::placeholder {
+        @content;
+    }
+}
