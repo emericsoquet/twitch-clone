@@ -11,4 +11,17 @@
         font-size: 1rem;
         font-weight: 500;
     }
+
+    @include max-width(sm) {
+        width: 40px;
+        padding: 5px;
+        &__title {
+            display: none;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -24,3 +24,25 @@
         @content;
     }
 }
+
+@mixin min-width($breakpoint) {
+    @each $format, $pixel in $breakpoints {
+        @if($breakpoint == $format) {
+            @media screen and (min-width: $pixel) { @content; }
+        }
+        @else {
+            @media screen and (min-width: $breakpoint) { @content; }
+        }
+    }
+}
+
+@mixin max-width($breakpoint) {
+    @each $format, $pixel in $breakpoints {
+        @if($breakpoint == $format) {
+            @media screen and (max-width: $pixel) { @content; }
+        }
+        @else {
+            @media screen and (max-width: $breakpoint) { @content; }
+        }
+    }
+}

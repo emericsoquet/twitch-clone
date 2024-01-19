@@ -11,8 +11,8 @@ export default function Games() {
             let resArray = res.data.data;
             let dataArray = resArray.map( game => {
                 let url = game.box_art_url
-                .replace("{width}", "250")
-                .replace("{height}", "300")
+                .replace("{width}", "370")
+                .replace("{height}", "538")
 
                 game.box_art_url = url;
                 return game;
@@ -23,23 +23,20 @@ export default function Games() {
         fetchData();
     }, [])
 
-    console.log(games)
-
     return (
         <section className="games">
-            <h2 className="games__title">Most popular games</h2>
             
-            <div className="games__wrapper">
-                {games?.map((game, index) => (
-                    <article key={index} className="game">
-                        <img src={game.box_art_url} className="game__cover" alt={ 'Couverture de ' + game.name } />
-                        <div className="game__card">
-                            <h3 className="game__title">{game.name}</h3>
-                            <button className="game__link">Regarder {game.name}</button>
-                        </div>
-                    </article>
-                ))}
+            
+            <div className="games__container">
+                <div className="games__wrapper">
+                    {games?.map((game, index) => (
+                        <article key={index} className="game">
+                            <img src={game.box_art_url} className="game__cover" alt={ 'Couverture de ' + game.name } />
+                        </article>
+                    ))}
+                </div>
             </div>
+            
         </section>
     )
 }

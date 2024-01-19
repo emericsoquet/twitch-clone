@@ -1,0 +1,49 @@
+.games {
+    position: relative;
+    top: 25px;
+    width: calc(100% - 280px);
+    margin: 60px auto 60px 280px;
+
+    @include max-width(sm) {
+        margin-left: 50px;
+        width: calc(100% - 50px);
+    }
+
+
+    &__container {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 10px;
+    }
+
+
+    &__wrapper {
+        display: flex; 
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: auto;
+        width: 100%;
+        &::after {
+            content: '';
+        }
+    }
+
+    .game {
+        width: calc(370px / 2);
+        position: relative;
+        & > img {
+            width: 100%;
+            height: calc(538px / 2);
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+            position: relative;
+            display: block;
+        }
+    }
+}

@@ -36,6 +36,9 @@
         img {
             margin-right: 10px;
         }
+        @include max-width(xs) {
+            font-size: 0;
+        }
     }
 
     &__list {
@@ -84,6 +87,9 @@
         input[type="text"] {
             @include input-placeholder {
                 color: $main-txt;
+            }
+            @include max-width(xs) {
+                width: 120px;
             }
         }
         button {
