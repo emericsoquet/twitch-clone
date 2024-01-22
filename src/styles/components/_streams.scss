@@ -1,0 +1,55 @@
+.stream {
+    display: flex;
+    margin: 5px 0;
+    align-items: flex-start;
+
+    & > img {
+        border-radius: 100%;
+        height: 40px;
+        width: 40px;
+        margin-right: 7.5px;
+    }
+    &__infos {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        & > * {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .stream__user {
+            font-weight: 500;
+        }
+        .stream__game {
+            font-size: 90%;
+            padding-top: 1px;
+        }
+    }
+    &__viewers {
+        text-align: right;
+        font-size: .85rem;
+        padding-top: 2.5px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: auto;
+        margin-left: 5px;
+        &::before {
+            content: '';
+            display: block;
+            background: #FB3000;
+            border-radius: 100%;
+            height: 5px;
+            width: 5px;
+            margin-right: 5px;
+        }
+    }
+
+    @include max-width(sm) {
+        &__viewers, &__infos {
+            display: none;
+        }
+    }
+}

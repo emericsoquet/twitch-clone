@@ -1,70 +1,27 @@
-import { useState, useEffect } from 'react'
-import api from '../../api'
+import { useState, useEffect } from 'react';
+
+import formatLongNumbers from '../../utils/formatLongNumbers';
+import { getTopStreams } from '../../services/streams.service';
 
 export default function Sidebar() {
 
     const [topStreams, setTopStreams] = useState([])
+    const fetchData = async () => {
+        try {
+            const topStreamsData = await getTopStreams();
+            setTopStreams(topStreamsData)
+        } catch(error) {
+            console.error('Error fetching top streams:', error);
+        }
+    }
 
     useEffect( () => {
-        const fetchData = async () => {
-            const res = await api.get('https://api.twitch.tv/helix/streams');
-            let resData = res.data.data;
 
-            setTopStreams(resData);
+        fetchData(setTopStreams);
 
-            let gamesId = resData.map( stream => (stream.game_id));
-            let usersId = resData.map( stream => (stream.user_id));
-
-            // Création des URLs personnalités
-            let baseGameURL = 'https://api.twitch.tv/helix/games?';
-            let baseUserURL = 'https://api.twitch.tv/helix/users?';
-
-            let queryParamsGame = '';
-            let queryParamsUser = '';
-
-            const requestElementById = async (arr, req, baseUrl) => {
-
-                arr.map( id => (req = req + `id=${id}&`) );
-                let url = baseUrl + req;
-                
-                let res = await api.get(url);
-                let resData = res.data.data;
-
-                return resData
-            }
-
-            Promise.all([
-                requestElementById(gamesId, queryParamsGame, baseGameURL),
-                requestElementById(usersId, queryParamsUser, baseUserURL)
-            ]).then(([games, users]) => {
-                let listTopStreams = resData.map( stream => {
-
-                    stream.gameName = '';
-                    stream.truePic = '';
-                    stream.login = '';
-
-                    games.forEach(game => {
-                        users.forEach(user => {
-                            if(stream.user_id === user.id && stream.game_id === game.id) {
-                                stream.truePic = user.profile_image_url;
-                                stream.gameName = game.name;
-                                stream.login = user.login;
-                            }
-                        })
-                    })
-
-                    return stream
-                })
-                
-                setTopStreams(listTopStreams.slice(0,10))
-            })
-            
-            
-        }
-        fetchData();
     }, [])
 
-    console.log(topStreams)
+    /* console.log(streams) */
 
     return (
         <div className="sidebar">
@@ -83,7 +40,7 @@ export default function Sidebar() {
                         </div>
 
                         <div className="stream__viewers">
-                            {stream.viewer_count}
+                            {formatLongNumbers(stream.viewer_count)}
                         </div>
                     </li>
                 ))}

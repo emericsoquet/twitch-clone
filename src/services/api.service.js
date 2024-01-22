@@ -17,5 +17,5 @@ let api = axios.create({
     AUTH COMPLETED = https://id.twitch.tv/oauth2/authorize?client_id=8oykh18covsabzf18ima8i3xf5dpij&redirect_uri=http://localhost:4000/&response_type=token
 */
 
-export default api
+export default api;
 

@@ -2,3 +2,15 @@ body {
     background: $bg2;
     color: $main-txt;
 }
+
+main {
+    position: relative;
+    top: 25px;
+    width: calc(100% - 280px);
+    margin: 60px auto 60px 280px;
+
+    @include max-width(sm) {
+        margin-left: 50px;
+        width: calc(100% - 50px);
+    }
+}
