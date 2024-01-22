@@ -26,7 +26,7 @@ export default function TopStreams() {
                          alt="" 
                     />
                     <div className="preview__info-box">
-                        <img src="" className="preview__game" alt="" />
+                        <img src={ stream.box_art_url } className="preview__game" alt="" />
                         <figure className="preview__streamer">
                             <img src={ stream.truePic } className="streamer__pic" alt="" />
                             <figcaption className="streamer__name">{stream.user_name}</figcaption>
