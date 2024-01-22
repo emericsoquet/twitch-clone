@@ -8,7 +8,7 @@ export default function Sidebar() {
     const [topStreams, setTopStreams] = useState([])
     const fetchData = async () => {
         try {
-            const topStreamsData = await getTopStreams();
+            const topStreamsData = await getTopStreams('fr');
             setTopStreams(topStreamsData)
         } catch(error) {
             console.error('Error fetching top streams:', error);
@@ -16,12 +16,10 @@ export default function Sidebar() {
     }
 
     useEffect( () => {
-
-        fetchData(setTopStreams);
-
+        fetchData();
     }, [])
 
-    /* console.log(streams) */
+    console.log(topStreams)
 
     return (
         <div className="sidebar">

@@ -26,18 +26,31 @@ export const getTopStreams = async () => {
     console.log(params)
     const users = await getUsers(params);
 
-    console.log(users)
-
     let listTopStreams = streams.map( stream => {
+
         stream.truePic = '';
         users.forEach( user => {
             if(stream.user_id === user.id) {
                 stream.truePic = user.profile_image_url
             }
         })
+
+        let thumbnail = stream.thumbnail_url
+        .replace("{width}", "320")
+        .replace("{height}", "180")
+        stream.thumbnail_url = thumbnail
+        
+
         return stream;
     })
 
     return listTopStreams;
+}
+
+export const getTopStreamsByLanguage = async (country) => {
+    const topStreams = await getTopStreams();
+
+    let topStreamsByLanguage = topStreams.filter( stream => (stream.language === country) );
+    return topStreamsByLanguage;
 }
 
