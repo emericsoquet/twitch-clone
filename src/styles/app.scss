@@ -13,9 +13,11 @@
 @import 'components/buttons';
 @import 'components/inputs';
 @import 'components/streams';
+@import 'components/previews';
 
 /* blocks : parts of specific page */
 @import 'blocks/games';
+@import 'blocks/top-streams';
 
 /* layout : common elements on most pages */
 @import 'layout/header';

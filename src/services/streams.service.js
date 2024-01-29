@@ -58,8 +58,8 @@ export const getTopStreams = async () => {
         });
 
         let thumbnail = stream.thumbnail_url
-        .replace("{width}", "320")
-        .replace("{height}", "180");
+        .replace("{width}", "1060")
+        .replace("{height}", "600");
         stream.thumbnail_url = thumbnail;
 
         let boxArt = stream.box_art_url

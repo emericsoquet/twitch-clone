@@ -19,22 +19,31 @@ export default function TopStreams() {
 
     return (
         <div className="top-streams">
-            { topStreams?.map( (stream, index) => (
-                <a href="#" key={index} className="preview">
-                    <img className="preview__stream"
-                         src={ stream.thumbnail_url } 
-                         alt="" 
-                    />
-                    <div className="preview__info-box">
-                        <img src={ stream.box_art_url } className="preview__game" alt="" />
-                        <figure className="preview__streamer">
-                            <img src={ stream.truePic } className="streamer__pic" alt="" />
-                            <figcaption className="streamer__name">{stream.user_name}</figcaption>
-                        </figure>
-                        <p className="preview__name">{stream.game_name}</p>
-                    </div>
-                </a>
-            ))}
+            <div className="top-streams__container">
+                <div className="top-streams__wrapper">
+                    { topStreams?.map( (stream, index) => (
+                        <a href="#" key={index} className="preview">
+                            <figure className="preview__stream">
+                                <img 
+                                    src={ stream.thumbnail_url } 
+                                    alt="" 
+                                />
+                            </figure>
+                            <div className="preview__info-box">
+                                <img src={ stream.box_art_url } className="preview__game" alt="" />
+                                <div className="preview__infos">
+                                    <figure className="preview__streamer">
+                                        <img src={ stream.truePic } className="streamer__pic" alt="" />
+                                        <figcaption className="streamer__name">{stream.user_name}</figcaption>
+                                    </figure>
+                                    <p className="preview__name">{stream.game_name}</p>
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+                
+            </div>
         </div>
     )
 }

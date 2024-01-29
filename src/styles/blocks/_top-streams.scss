@@ -1,0 +1,16 @@
+.top-streams {
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px;
+        max-width: 100%;
+    }
+    &__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        max-width: 100%;
+    }
+}
