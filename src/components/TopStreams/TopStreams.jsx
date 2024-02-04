@@ -23,7 +23,10 @@ export default function TopStreams() {
             <div className="top-streams__container">
                 <div className="top-streams__wrapper">
                     { topStreams?.map( (stream, index) => (
-                        <Link to="/" key={index} className="preview">
+                        <Link 
+                                to={{pathname: `/live/${stream.user_login}`}} 
+                                key={index} 
+                                className="preview">
                             <figure className="preview__stream">
                                 <img 
                                     src={ stream.thumbnail_url } 

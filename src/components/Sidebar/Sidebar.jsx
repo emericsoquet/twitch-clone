@@ -19,8 +19,6 @@ export default function Sidebar() {
         fetchData();
     }, [])
 
-    console.log(topStreams)
-
     return (
         <div className="sidebar">
             <h2 className="sidebar__title">
