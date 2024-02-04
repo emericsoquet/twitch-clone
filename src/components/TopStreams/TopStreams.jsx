@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getTopStreams } from '../../services/streams.service';
+import { Link } from 'react-router-dom';
 
 export default function TopStreams() {
 
@@ -22,7 +23,7 @@ export default function TopStreams() {
             <div className="top-streams__container">
                 <div className="top-streams__wrapper">
                     { topStreams?.map( (stream, index) => (
-                        <a href="#" key={index} className="preview">
+                        <Link to="/" key={index} className="preview">
                             <figure className="preview__stream">
                                 <img 
                                     src={ stream.thumbnail_url } 
@@ -39,7 +40,7 @@ export default function TopStreams() {
                                     <p className="preview__name">{stream.game_name}</p>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
                     ))}
                 </div>
                 

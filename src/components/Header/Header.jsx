@@ -1,29 +1,41 @@
-import Logo from '../../assets/media/logoTwitch.svg'
-import SearchButton from '../../assets/media/iconSearch.svg'
-import iconBrowse from '../../assets/media/iconBrowse.svg'
+import Logo from '../../assets/media/logoTwitch.svg';
+import SearchButton from '../../assets/media/iconSearch.svg';
+import iconBrowse from '../../assets/media/iconBrowse.svg';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Header() {
+
+    const [showNav, setShowNav] = useState(false);
+    const expandMenu = () => {
+        setShowNav(!showNav);
+    }
+
     return(
         <header className="header">
             <nav className="header__nav">
 
                 <div className="header__menu">
-                    <a href="" className="header__logo">
+                    <Link to="/" className="header__link header__logo">
                         <img src={Logo} alt="Logo Twitch"  />
-                    </a>
+                    </Link>
 
-                    <a href="" className="header__browse-link">
+                    <Link to="/" className="header__browse-link">
                         <img src={iconBrowse} alt="Browse" />
                         Browse
-                    </a>
+                    </Link>
 
                     <div className="header__list">
-                        <button className="header__toggle">
+                        <button className="header__toggle" onClick={ expandMenu }>
                             <span></span><span></span><span></span>
                         </button>
-                        <ul>
-                            <li><a href="">Top Games</a></li>
-                            <li><a href="">Top Streams</a></li>
+                        <ul className={ showNav ? 'is-active' : ''}>
+                            <li>
+                                <Link to="/" className="header__link">Top Games</Link>
+                            </li>
+                            <li>
+                                <Link to="/top-streams">Top Streams</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
