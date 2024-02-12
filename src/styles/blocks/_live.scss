@@ -1,0 +1,79 @@
+.live {
+    margin-top: -30px;
+
+    &__wrapper {
+        margin: 15px 30px;
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 30px;
+        .live__profile {
+            display: flex;
+            align-items: flex-start;
+            figure {
+                border-radius: 100%;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 75px;
+                width: 75px;
+                min-height: 75px;
+                min-width: 75px;
+                padding: 2px;
+                border: 3px solid $primary;
+                margin-right: 10px;
+                img {
+                    height: 100%;
+                    width: auto;
+                    border-radius: 100%;
+                }
+
+                &.is-streaming {
+                    &::before {
+                        position: absolute;
+                        display: block;
+                        content: 'Live';
+                        text-transform: uppercase;
+                        background: $danger;
+                        left: -10px;
+                        bottom: -10px;
+                        color: $bg-text;
+                        font-weight: 500;
+                        padding: 5px;
+                        border-radius: 4px;
+                    }
+                }
+            }
+            
+            .live {
+                &__name {
+                    font-size: 140%;
+                }
+                &__title{
+                    font-size: 120%;
+                    margin: 5px 0;
+                }
+                &__game {
+                    font-size: 1rem;
+                    color: $primary;
+                    font-weight: 700;
+                    span {
+                        display: inline-block;
+                        background: $border1;
+                        color: $main-txt;
+                        padding: 1px 10px;
+                        border-radius: 10px;
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+
+        .live__stats {
+            .live__viewers {
+                color: $danger;
+                font-weight: 600;
+            }
+        }
+    }
+}

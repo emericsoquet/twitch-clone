@@ -14,6 +14,7 @@ export const getGames = async (gamesList) => {
 
 export const getUsers = async (usersList) => {
     const data = await api.get(URL + 'users?' + usersList);
+    console.log(URL + 'users?' + usersList);
     return data.data.data;
 }
 
@@ -22,17 +23,6 @@ export const requestElementById = async (arr) => {
     arr.map( id => (params = params + 'id=' + id + '&'));
     return params;
 }
-
-/* const requestElementById = async (arr, req, baseUrl) => {
-
-    arr.map( id => (req = req + `id=${id}&`) );
-    let url = baseUrl + req;
-    
-    let res = await api.get(url);
-    let resData = res.data.data;
-
-    return resData
-} */
 
 export const getTopStreams = async () => {
     const streams = await getStreams();
