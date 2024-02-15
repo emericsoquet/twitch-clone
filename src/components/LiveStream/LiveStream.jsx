@@ -31,7 +31,7 @@ export default function LiveStream() {
 
     useEffect( () => {
         fetchStreamData();
-    }, []);
+    }, [slug]);
 
     console.log(streamer)
     console.log()
