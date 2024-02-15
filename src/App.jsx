@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar/Sidebar'
 import Games from './components/Games/Games'
 import TopStreams from './components/TopStreams/TopStreams'
 import LiveStream from './components/LiveStream/LiveStream'
+import GameStreams from './components/GameStreams/GameStreams'
 
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
               <Route exact path="/" element={<Games />} />
               <Route exact path="/top-streams" element={<TopStreams />} />
               <Route exact path="/live/:slug" element={<LiveStream />} />
+              <Route exact path="/game/:slug" element={<GameStreams />} />
             </Routes>
           </main>
       </BrowserRouter>

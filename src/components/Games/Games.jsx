@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import api from '../../services/api.service'
+import api from '../../services/api.service';
+import { Link } from 'react-router-dom';
 
 export default function Games() {
 
@@ -21,7 +22,9 @@ export default function Games() {
             setGames(dataArray);
         }
         fetchData();
-    }, [])
+    }, []);
+
+    console.log(games);
 
     return (
         <section className="games">
@@ -30,9 +33,15 @@ export default function Games() {
             <div className="games__container">
                 <div className="games__wrapper">
                     {games?.map((game, index) => (
-                        <article key={index} className="game">
+                        <Link 
+                        to={{ 
+                            pathname: '/game/' + game.name,
+                        }}
+                        state={{gameId: game.id }}
+                        key={index} className="game">
                             <img src={game.box_art_url} className="game__cover" alt={ 'Couverture de ' + game.name } />
-                        </article>
+                        </Link>
+                        
                     ))}
                 </div>
             </div>

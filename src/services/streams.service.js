@@ -14,7 +14,6 @@ export const getGames = async (gamesList) => {
 
 export const getUsers = async (usersList) => {
     const data = await api.get(URL + 'users?' + usersList);
-    console.log(URL + 'users?' + usersList);
     return data.data.data;
 }
 
@@ -69,5 +68,47 @@ export const getTopStreamsByLanguage = async (country) => {
 
     let topStreamsByLanguage = topStreams.filter( stream => (stream.language === country) );
     return topStreamsByLanguage;
+}
+
+export const getGameStreams = async (id) => {
+    const res = await api.get(URL + 'streams?game_id=' + id);
+    let dataArray = res.data.data;
+    
+    // change image parameters
+    let gameStreamData = dataArray.map( game => {
+        let imgUrl = game.thumbnail_url
+        .replace('{width}', '320')
+        .replace('{height}', '180');
+
+        game.thumbnail_url = imgUrl;
+        return game;
+    });
+
+    // add streamer data to the array
+    let usersId = gameStreamData.map( stream => {
+        return stream.user_id;
+    });
+    
+    let queryParamsUsers = '';
+    usersId.map( id => {
+        return queryParamsUsers = queryParamsUsers + `id=${id}&`;
+    });
+    let requestUrl = URL + 'users?' + queryParamsUsers;
+
+    const streamersData = await api.get(requestUrl);
+    let streamersArray = streamersData.data.data;
+
+    gameStreamData = dataArray.map( stream => {
+        stream.login = '';
+        streamersArray.forEach( login => {
+            if(stream.user_id === login.id ) {
+                stream.login = login.login;
+            }
+        });
+
+        return stream;
+    })
+
+    return gameStreamData;
 }
 
