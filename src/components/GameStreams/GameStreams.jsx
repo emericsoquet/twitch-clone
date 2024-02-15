@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { getGameStreams } from '../../services/streams.service';
-import { getUserByLogin } from '../../services/live.service';
+import { Link } from 'react-router-dom';
 
 
 export default function GameStreams() {
@@ -40,6 +40,26 @@ export default function GameStreams() {
             <div className="game-streams__heading">
                 <h1>{ slug }</h1>
                 <span>{ viewers }</span>
+            </div>
+
+            <div className="game-streams__wrapper">
+                { streamData?.map( (stream, i) => (
+                    <Link 
+                        to={{
+                        pathname: `/live/${stream.login}`
+                        }} 
+                        key={i} 
+                        className="game-streams__card"
+                    >
+                        <figure>
+                            <img src={ stream.thumbnail_url } alt="" />
+                        </figure>
+                        <figcaption>
+                            <h2>{stream.user_name}</h2>
+                            <span className="game-streams__viewers">{ stream.viewer_count }</span>
+                        </figcaption>
+                    </Link>
+                ))}
             </div>
 
         </div>
