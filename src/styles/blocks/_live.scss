@@ -30,17 +30,7 @@
 
                 &.is-streaming {
                     &::before {
-                        position: absolute;
-                        display: block;
-                        content: 'Live';
-                        text-transform: uppercase;
-                        background: $danger;
-                        left: -10px;
-                        bottom: -10px;
-                        color: $bg-text;
-                        font-weight: 500;
-                        padding: 5px;
-                        border-radius: 4px;
+                        @extend %live-tag;
                     }
                 }
             }

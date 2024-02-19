@@ -24,8 +24,6 @@ export default function Games() {
         fetchData();
     }, []);
 
-    console.log(games);
-
     return (
         <section className="games">
             

@@ -9,10 +9,23 @@ export const getLiveStream = async (login) => {
 
 export const getStreamedGame = async (gameId) => {
     const data = await api.get(URL + 'games' + '?id=' + gameId);
-    return data.data.data;
+    let dataArray = data.data.data;
+
+    let formatData = dataArray.map( game => {
+        let imgUrl = game.box_art_url
+        .replace('{width}', '370')
+        .replace('{height}', '538')
+
+        game.box_art_url = imgUrl;
+        return game;
+    })
+
+    return formatData;
 }
 
 export const getUserByLogin = async (login) => {
     const data = await api.get(URL + 'users' + '?login=' + login);
-    return data.data.data;
+    let dataArray = data.data.data;
+
+    return dataArray;
 }
