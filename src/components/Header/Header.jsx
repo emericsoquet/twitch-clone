@@ -11,6 +11,12 @@ export default function Header() {
         setShowNav(!showNav);
     }
 
+    const [searchInput, setSearchInput] = useState('');
+    const handleKeyPress = (event) => {
+        setSearchInput(event.target.value)
+    }
+
+
     return(
         <header className="header">
             <nav className="header__nav">
@@ -41,10 +47,22 @@ export default function Header() {
                 </div>
 
                 <form className="header__search">
-                    <input type="text" className="search__input" placeholder="Rechercher" />
-                    <button type="submit" className="search__submit">
-                        <img src={SearchButton} alt="" />
-                    </button>
+                    <input  required type="text" 
+                            className="search__input" 
+                            placeholder="Rechercher" 
+                            value={searchInput}
+                            onChange={ (event) => handleKeyPress(event) } />
+
+                    <Link 
+                        to={{
+                            pathname: `results/${searchInput}`
+                        }}
+                        className="search__submit"
+                    >
+                        <button type="submit">
+                            <img src={SearchButton} alt="" />
+                        </button>
+                    </Link>
                 </form>
 
                 

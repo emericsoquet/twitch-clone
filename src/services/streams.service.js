@@ -1,5 +1,4 @@
 import api from './api.service.js';
-import { getLiveStream } from './live.service.js';
 
 const URL = 'https://api.twitch.tv/helix/';
 
@@ -74,8 +73,6 @@ export const getTopStreamsByLanguage = async (country) => {
 export const getGameStreams = async (id) => {
     const res = await api.get(URL + 'streams?game_id=' + id);
     let dataArray = res.data.data;
-
-    console.log(dataArray)
     
     // change image parameters
     let gameStreamData = dataArray.map( game => {

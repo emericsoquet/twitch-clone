@@ -9,6 +9,7 @@ import Games from './components/Games/Games'
 import TopStreams from './components/TopStreams/TopStreams'
 import LiveStream from './components/LiveStream/LiveStream'
 import GameStreams from './components/GameStreams/GameStreams'
+import Results from './components/Results/Results'
 
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
               <Route exact path="/top-streams" element={<TopStreams />} />
               <Route exact path="/live/:slug" element={<LiveStream />} />
               <Route exact path="/game/:slug" element={<GameStreams />} />
+              <Route exact path="/results/:slug" element={<Results />} />
             </Routes>
           </main>
       </BrowserRouter>
