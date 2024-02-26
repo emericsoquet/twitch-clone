@@ -1,0 +1,13 @@
+.cta {
+    display: table;
+    background: $primary;
+    font-weight: 500;
+    color: $bg-text;
+    padding: 10px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+        background: lighten($primary, 1);
+    }
+}
