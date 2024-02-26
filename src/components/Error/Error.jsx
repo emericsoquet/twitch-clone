@@ -10,11 +10,15 @@ export default function Error() {
                         <h1>Oops</h1>
                         <p>
                             { slug ? 
-                                    `Unfortunately, there is no match for ${ slug }. Check you didn't mispell what you were looking for.` 
+                                    <>Unfortunately, there is no match for <strong>{ slug }</strong>. Check you didn't mispell what you were looking for.</>
                                     : `Please type something in the searchbar to get a result.`
                             }
                             </p>
-                        <Link className="cta" to={{ pathname: `/`}}>Homepage</Link>
+
+                        <div className="results__return">Return to 
+                            <Link className="cta" to={{ pathname: `/`}}>Homepage</Link>
+                        </div>
+                        
                     </div>
                     </div>
                 </div>

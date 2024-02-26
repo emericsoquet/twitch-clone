@@ -38,8 +38,6 @@ export default function Results() {
         fetchData();
     }, [cleanSearch])
 
-    console.log(streamer)
-
     return (
 
         result ? 
