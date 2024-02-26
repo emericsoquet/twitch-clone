@@ -34,7 +34,7 @@ export default function GameStreams() {
             }
         }
         fetchData();
-    }, [])
+    }, [location.state.gameId])
 
     console.log(streamData);
 

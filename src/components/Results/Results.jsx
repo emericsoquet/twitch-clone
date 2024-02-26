@@ -16,8 +16,6 @@ export default function Results() {
         const fetchData = async () => {
             const data = await getUserByLogin(cleanSearch);
 
-            console.log(data)
-
             if(data.length === 0) {
                 setResult(false);
             } else {
@@ -26,9 +24,7 @@ export default function Results() {
             }
         } 
         fetchData();
-    }, [slug])
-
-    console.log(streamer);
+    }, [cleanSearch])
 
     return (
 
